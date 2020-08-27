@@ -1,5 +1,5 @@
 # NotelyRestApi
 
-# Gif
+## Gif
 
 ![](NotelyRestApi.gif)
