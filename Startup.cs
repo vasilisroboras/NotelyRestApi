@@ -5,10 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using NotelyRestApi.Database;
+using NotelyRestApi.Repositories;
+using NotelyRestApi.Repositories.Implementations;
 
 namespace NotelyRestApi
 {
@@ -25,6 +30,12 @@ namespace NotelyRestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(name: "v1", new OpenApiInfo { Title = "Notely Rest Api", Version = "v1" });
+            });
+            services.AddDbContext<NotelyDbContext>(optionsAction:options => options.UseSqlite(Configuration["Data:NotelyRestApi:ConnectionString"]));
+            services.AddTransient<INoteRepository, NoteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +45,13 @@ namespace NotelyRestApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "Notely Rest Api");
+            });
 
             app.UseRouting();
 
