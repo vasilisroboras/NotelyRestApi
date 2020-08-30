@@ -8,7 +8,7 @@ My first Asp.Net Core Rest Api Project. This Api allows to create and register n
 
 ## Created with
 
-This Rest Api implemented using the Unit of  Work and Repository patterns.Entity Framework was used and SQLite Database.
+This Rest Api implemented using the Unit of  Work and Repository patterns. Entity Framework was used and SQLite Database.
 
 ## Gif
 
