@@ -4,12 +4,12 @@ Vasilis Romporas
 
 ## Introduction
 
-My first Asp.Net Core Rest Api Project. This Api allows to create and register new notes or delete, also fetch all notes or a particular one.
+My first Asp.Net Core Rest Api Project. This Api provides CRUD operations for notes, including reading all notes or just one note. 
 
 ## Created with
 
-This Rest Api implemented using the Unit of  Work and Repository patterns. Entity Framework was used and SQLite Database.
+This Rest Api is implemented using the Unit of Work and Repository patterns. Entity Framework and SQLite Database were used as persistence services.
 
-## Gif
+## Gifprovide
 
 ![](NotelyRestApi.gif)
